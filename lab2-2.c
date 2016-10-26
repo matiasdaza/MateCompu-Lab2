@@ -1,4 +1,4 @@
-//1.- Algoritmo Euclidiano
+//2.- Algoritmo Euclidiano
 
 #include <stdio.h>
 #include <time.h> //Librería para medir el tiempo
