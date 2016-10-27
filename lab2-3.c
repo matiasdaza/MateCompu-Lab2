@@ -95,7 +95,7 @@ int main(int argc, char *argv[]){
     printf("\nEl numero de veces que 'a' y/o 'b' fueron cambiados es: %d\n\n", vueltas);    //Se muestra por consola la cantidad de veces en que a y/o b fueron cambiados.
     fin = clock();  ///Variable que almacena el tiempo final de ejecucion del programa.
     tiempo = (fin-inicio)/(double)CLOCKS_PER_SEC;
-    printf("El tiempo de ejecución fue de: %F \n\n",tiempo);   //Se imprime el tiempo de ejecucion.
+    printf("\nEl tiempo de ejecución fue de: %F \n\n",tiempo);   //Se imprime el tiempo de ejecucion.
     file = fopen("algoritmo3.txt", "a");
     if(file == NULL)
     {

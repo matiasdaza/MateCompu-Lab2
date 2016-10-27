@@ -11,13 +11,19 @@ void gcd(mpz_t a, mpz_t b);
 //Lo hago para recibir los valores desde la consola!!!
 
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	mpz_t a, b;
+	FILE *file;
+	mpz_t a, b, aux_a, aux_b;
 	clock_t inicio, fin; // Se crea variable 'clock_t' para calcular el tiempo de ejecúción del programa.
 	inicio=clock();
+	float tiempo = 0;
 	mpz_init_set_str(a,argv[1],10);
 	mpz_init_set_str(b,argv[2],10);
+	mpz_init(aux_a);
+    mpz_init(aux_b);
+	mpz_set(aux_a, a);
+    mpz_set(aux_b, b);
 	if(mpz_cmp_ui(a, 0)<0 || mpz_cmp_ui(b,0)<0) //Condición para que los valores de n y k sean positivos!
 	{	
 		printf("Los valores de n y de k deben ser positivos\n");
@@ -40,7 +46,20 @@ main(int argc, char *argv[])
 	}
 	
 	fin=clock();
+	tiempo = (fin-inicio)/(double)CLOCKS_PER_SEC;
 	printf("El tiempo de ejecución fue de: %f \n",(fin-inicio)/(double)CLOCKS_PER_SEC); // %f es porque es un flotante!!!
+	file = fopen("algoritmo2.txt", "a");
+    if(file == NULL)
+    {
+        printf("Error al abrir archivo");
+    }
+    mpz_out_str(file, 10, aux_a);
+    fprintf(file,"\t");
+    mpz_out_str(file, 10, aux_b);
+    fprintf(file,"\t %F \n",tiempo);
+    fclose(file);
+    mpz_clear(aux_a);
+    mpz_clear(aux_b);
 
 	return 0; 
 }

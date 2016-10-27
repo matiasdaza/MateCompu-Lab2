@@ -161,11 +161,13 @@ int main(int argc, char *argv[])
     mpz_mul(d, d, a);   //Se asigna a 'd' el valor de d*a.
     mpz_set(s, s1); //Se asigna a 's' el valor de s1.
     mpz_set(t, t1); //Se asigna a 't' el valor de t1.
-    gmp_printf("\nEl gdc es: %Zd\n\n", d);  //Se imprime por pantalla el gcd entre ambos enteros.
-    gmp_printf("Los enteros que satisfacen la condicion s*a + t*b = d son: s = %Zd; t = %Zd \n", s, t); //Se imprime por pantalla el valor de s y t.
+
+    gmp_printf("\nEl gcd es: %Zd \n", d);   //Se muestra por consola el valor del maximo comun divisor entre a y b.
+    gmp_printf("\nLos enteros que satisfacen la condicion s*a + t*b = d son: s = %Zd; t = %Zd \n", s, t); //Se imprime por pantalla el valor de s y t.
+    
     fin = clock();  ///Variable que almacena el tiempo final de ejecucion del programa.
     tiempo = (fin-inicio)/(double)CLOCKS_PER_SEC;
-    printf("El tiempo de ejecución fue de: %F \n\n",tiempo);   //Se imprime el tiempo de ejecucion.
+    printf("\nEl tiempo de ejecución fue de: %F \n\n",tiempo);   //Se imprime el tiempo de ejecucion.
     file = fopen("algoritmo5.txt", "a");
     if(file == NULL)
     {
