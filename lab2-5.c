@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <math.h>
 
-main() 
+int main(int argc, char *argv[]) 
 {
     FILE *file;
     int j, inicio, fin; //Se inicializa variable j, inicio y fin.
@@ -12,8 +12,10 @@ main()
     inicio = clock();   //Variable que comienza a tomar el tiempo de ejecucion del programa.
     j = 2;  //El valor de j es 2.
     mpz_t i, a, b, r, u, v, d, A, B, s, t, s1, s2, t1, t2, suma_s1, suma_s2, resta_t2, resta_t1, suma_u, resta_v, aux_a, aux_b;   //Se designan las variables de tipo gmp.
-    mpz_init(a);    //Se inicializa la variable a.
-    mpz_init(b);    //Se inicializa la variable b.
+    
+    mpz_init_set_str(a,argv[1],10);
+    mpz_init_set_str(b,argv[2],10);
+
     mpz_init(r);    //Se inicializa la variable r.
     mpz_init(u);    //Se inicializa la variable u.
     mpz_init(v);    //Se inicializa la variable v.
@@ -41,10 +43,6 @@ main()
     mpz_init_set_ui(s2, 0); //Se inicializa la variable s2 en 0.
     mpz_init_set_ui(t2, 1); //Se inicializa la variable t2 en 1.
     mpz_init_set_ui(i, 2);  //Se inicializa la variable i en 2.
-    printf("\nIngrese el numero 'a': ");    //Se pide por consola que se ingrese el numero a.
-    gmp_scanf("%Zd", a);    //Una vez ingresado, el programa lee el numero.
-    printf("Ingrese el numero 'b': ");  //Se pide por consola que se ingrese el numero b.
-    gmp_scanf("%Zd", b);    //Una vez ingresado, el programa lee el numero.
     mpz_set(aux_a, a);
     mpz_set(aux_b, b);
 
