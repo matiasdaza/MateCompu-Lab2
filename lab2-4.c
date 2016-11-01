@@ -10,15 +10,16 @@
 
 int main(int argc, char *argv[]){
 	
-	
+	FILE *file;
 	mpz_t a;
 	mpz_t b;
+	float tiempo=0;
 
 	mpz_init_set_str(a, argv[1],10);
 	mpz_init_set_str(b, argv[2],10);
 
 	
-	mpz_t s, t, s_1, t_1, s_2, t_2, d, q, resultado, auxiliar, u, v; //Valores definidos
+	mpz_t s, t, s_1, t_1, s_2, t_2, d, q, resultado, auxiliar, u, v, aux_a, aux_b; //Valores definidos
 	
 	//Iniciar las variables en 0
 
@@ -34,6 +35,10 @@ int main(int argc, char *argv[]){
 	mpz_init(auxiliar);
 	mpz_init(u);
 	mpz_init(v);
+	mpz_init(aux_a);
+    mpz_init(aux_b);
+    mpz_set(aux_a, a);
+    mpz_set(aux_b, b);
 	
 	clock_t inicio, fin; //Variables para medir el tiempo
 	
@@ -150,12 +155,25 @@ int main(int argc, char *argv[]){
 }
 	
 	fin=clock();
-	printf("\n El tiempo de ejecución en segundos fue de: %f \n",(fin-inicio)/(double)CLOCKS_PER_SEC);
+	tiempo=(fin-inicio)/(double)CLOCKS_PER_SEC;
+	printf("\n El tiempo de ejecución en segundos fue de: %f \n",tiempo);
+	file = fopen("algoritmo4.txt", "a");
+    if(file == NULL)
+    {
+        printf("Error al abrir archivo");
+    }
+    mpz_out_str(file, 10, aux_a);
+    fprintf(file,"\t");
+    mpz_out_str(file, 10, aux_b);
+    fprintf(file,"\t %F \n",tiempo);
+    fclose(file);
 	
 	
 	
 	mpz_clears(a);
 	mpz_clears(b);
+	mpz_clears(aux_a);
+	mpz_clears(aux_b);
 	mpz_clears(s);
 	mpz_clears(t);
 	mpz_clears(s_1);
