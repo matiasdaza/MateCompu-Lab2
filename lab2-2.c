@@ -34,6 +34,16 @@ int main(int argc, char *argv[])
 		printf("El valor de a tiene que ser mayor que el de b.\n"); // Si se ingresan mal los datos, el programa lo acusará y se cerrará.
 		return 0;
 	}
+	if (mpz_cmp(a, b) < 0)  //Se verifica si el valor de a es mayor al de b, de no ser asi, la comparacion retorna un valor negativo.
+    {
+        printf("\nError, el valor de a debe ser mayor al de b, se procederá a intercambiarlos...\n\n");   //Se muestra por pantalla el error.
+        mpz_swap(a,b);
+        gmp_printf("Nuevo 'a': %Zd \n", a);
+        gmp_printf("Nuevo 'b': %Zd \n", b);
+        getchar();
+        printf("Presione la tecla Enter para continuar...\n");
+        getchar();
+    }
 	if (argc != 3) //Como argc es la cantidad de parámetros, si lee más de 3 estará malo (porque solo necesitamos n y k)
 	{
 		printf("Para ejecutar use: ./Ejecutar [valor a] [valor b] \n"); // Si se ingresan más de dos argumentos en la terminal, el programa lo acusará y se cerrará.
