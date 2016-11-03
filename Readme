@@ -1,0 +1,17 @@
+
+Para compilar y ejecutar
+
+La lectura del programa es:
+
+Como tenemos 5 programas que hacen distintas funciones necesitaremos 5 opciones para ejecutar .
+Sea i el numero de la estrategia que se quiere usar entonces se debe compilar de la siguiente manera:
+
+gcc -o Ejecutari lab2-i.c -lgmp
+
+Para ejecutar :
+
+./Ejecutari a b
+
+Observacion importante: antes de compilar instalar librería gmp con el comando:
+
+sudo apt-get install libgmp3-dev
